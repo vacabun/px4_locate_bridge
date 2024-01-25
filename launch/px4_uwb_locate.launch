@@ -1,0 +1,13 @@
+<launch>
+    <arg name="namespace" default="px4_uwb_locate_node" />
+
+    <arg name="tag_name" default="x500_0" />
+    <arg name="uas_name" default="uas_1" />
+    <node pkg="px4_uwb_locate"
+        exec="px4_uwb_locate"
+        namespace="$(var namespace)"
+        output="screen">
+        <param name="tag_name" value="$(var tag_name)" />
+        <param name="uas_name" value="$(var uas_name)" />
+    </node>
+</launch>
