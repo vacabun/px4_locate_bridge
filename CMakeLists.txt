@@ -20,15 +20,16 @@ find_package(ament_cmake REQUIRED)
 find_package(ament_index_cpp REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(geometry_msgs REQUIRED)
-add_executable(px4_uwb_locate 
-  src/px4_uwb_locate.cpp 
+find_package(px4_msgs REQUIRED)
+add_executable(px4_locate_bridge 
+  src/px4_locate_bridge.cpp 
   )
 
-target_include_directories(px4_uwb_locate PUBLIC include)
+target_include_directories(px4_locate_bridge PUBLIC include)
 
-ament_target_dependencies(px4_uwb_locate rclcpp ament_index_cpp geometry_msgs)
+ament_target_dependencies(px4_locate_bridge rclcpp ament_index_cpp geometry_msgs px4_msgs)
 
-install(TARGETS px4_uwb_locate DESTINATION lib/${PROJECT_NAME})
+install(TARGETS px4_locate_bridge DESTINATION lib/${PROJECT_NAME})
 install(DIRECTORY launch DESTINATION share/${PROJECT_NAME})
 
 ament_package()
